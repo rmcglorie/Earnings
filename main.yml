@@ -1,0 +1,23 @@
+name: Setup
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'  # Replace '3.x' with the desired Python version
+
+    - name: Run setup script
+      run: |
+        pwsh -ExecutionPolicy Bypass -File setup.ps1
